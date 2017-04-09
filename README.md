@@ -4,6 +4,7 @@ This sudoku solver uses a brute force backtracking algorithm to solve puzzles.
 It takes puzzle input paths from the command line and prints the solved puzzle to the console.
 
 Sample input file:
+
     XXX15XX7X   
     1X6XXX82X   
     3XX86XX4X   
@@ -15,7 +16,9 @@ Sample input file:
     X5XX37XXX   
 
 Output:
+
 Solving resources/puzzle1.txt
+
     4 2 8 1 5 9 6 7 3   
     1 9 6 3 7 4 8 2 5   
     3 7 5 8 6 2 9 4 1   
