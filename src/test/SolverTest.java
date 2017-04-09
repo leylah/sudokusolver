@@ -89,25 +89,25 @@ public class SolverTest {
 		
 	}
 	
-//	@Test
-//	public void solveTest() throws Exception{
-//		
-//		puzzle = SudokuSolver.buildPuzzleFromFile("resources/testpuzzle.txt");
-//		solver = new Solver(puzzle);
-//		int[][] solvedPuzzle = solver.solve();
-//		
-//		int[][] correctPuzzle = {{4, 2, 8, 1, 5, 9, 6, 7, 3}, 
-//				{1, 9, 6, 3, 7, 4, 8, 2, 5 }, 
-//				{3, 7, 5, 8, 6, 2, 9, 4, 1 }, 
-//				{9, 8, 1, 4, 2, 3, 5, 6, 7},
-//				{5, 6, 4, 7, 1, 8, 3, 9, 2}, 
-//				{7, 3, 2, 5, 9, 6, 1, 8, 4},
-//				{2, 4, 3, 6, 8, 1, 7, 5, 9},
-//				{6, 1, 7, 9, 4, 5, 2, 3, 8},
-//				{8, 5, 9, 2, 3, 7, 4, 1, 6}};
-//		
-//		checkEquals(solvedPuzzle, correctPuzzle, "Incorrect value while solving the test puzzle.");
-//	}
+	@Test
+	public void solveTest() throws Exception{
+		
+		puzzle = SudokuSolver.buildPuzzleFromFile("resources/testpuzzle.txt");
+		solver = new Solver(puzzle);
+		int[][] solvedPuzzle = solver.solve();
+		
+		int[][] correctPuzzle = {{4, 2, 8, 1, 5, 9, 6, 7, 3}, 
+				{1, 9, 6, 3, 7, 4, 8, 2, 5 }, 
+				{3, 7, 5, 8, 6, 2, 9, 4, 1 }, 
+				{9, 8, 1, 4, 2, 3, 5, 6, 7},
+				{5, 6, 4, 7, 1, 8, 3, 9, 2}, 
+				{7, 3, 2, 5, 9, 6, 1, 8, 4},
+				{2, 4, 3, 6, 8, 1, 7, 5, 9},
+				{6, 1, 7, 9, 4, 5, 2, 3, 8},
+				{8, 5, 9, 2, 3, 7, 4, 1, 6}};
+		
+		checkEquals(solvedPuzzle, correctPuzzle, "Incorrect value while solving the test puzzle.");
+	}
 //
 //	@Test
 //	public void solveAllPuzzlesTest() throws Exception{
@@ -193,11 +193,11 @@ public class SolverTest {
 //		checkEquals(solvedPuzzle, correctPuzzle, "Puzzle 5 failed validation");
 //	}
 //	
-//	private void checkEquals(int[][] solvedPuzzle, int[][] correctPuzzle, String message){
-//		for (int row = 0; row < 9; row++) {
-//			for (int col = 0; col < 9; col++) {
-//				assertTrue(solvedPuzzle[row][col] == correctPuzzle[row][col]);
-//			}
-//		}
-//	}
+	private void checkEquals(int[][] solvedPuzzle, int[][] correctPuzzle, String message){
+		for (int row = 0; row < 9; row++) {
+			for (int col = 0; col < 9; col++) {
+				assertTrue(solvedPuzzle[row][col] == correctPuzzle[row][col]);
+			}
+		}
+	}
 }
