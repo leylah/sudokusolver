@@ -12,8 +12,7 @@ public class Solver {
 	 * Uses a brute force back tracking algorithm to solve sudoku puzzles.
 	 * 
 	 * @return the solved soduko puzzle
-	 * @throws Exception
-	 *             if unable to solve the puzzle
+	 * @throws Exception if unable to solve the puzzle
 	 */
 	public int[][] solve() throws Exception {
 
@@ -71,13 +70,14 @@ public class Solver {
 
 		try {
 
-			for (int row = 0; row < 9; row++)
-				for (int col = 0; col < 9; col++)
+			for (int row = 0; row < 9; row++) {
+				for (int col = 0; col < 9; col++) {
 					// non-zero values are considered solved
 					if (puzzle[row][col] != 0) {
 						solvedCells[row][col] = true;
 					}
-
+				}
+			}
 		} catch (Exception e) {
 			throw new Exception("Error while finding solved cells: " + e);
 		}
@@ -182,7 +182,6 @@ public class Solver {
 			upperColBound = 9;
 		}
 
-		//check if this value is allowed in the current 3x3 box
 		for (int r = lowerRowBound; r < upperRowBound; r++) {
 			for (int c = lowerColBound; c < upperColBound; c++) {
 				if (r == row && c == col) {

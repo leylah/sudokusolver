@@ -7,6 +7,7 @@ public class SudokuSolver {
 
 	/**
 	 * Takes puzzle files as input and prints the solved puzzle to console
+	 * 
 	 * @param args contains the paths to puzzle files
 	 */
 	public static void main(String[] args) {
@@ -18,18 +19,19 @@ public class SudokuSolver {
 
 		try {
 			for (String path : args) {
-				
+
 				System.out.println("Solving " + path);
 				int[][] puzzle = buildPuzzleFromFile(path);
-				
-				Solver solver = new Solver(puzzle);
-				int[][] solvedPuzzle = solver.solve();
+				if (puzzle != null) {
+					Solver solver = new Solver(puzzle);
+					int[][] solvedPuzzle = solver.solve();
 
-				for (int row = 0; row < 9; row++) {
-					for (int col = 0; col < 9; col++) {
-						System.out.print(solvedPuzzle[row][col] + " ");
+					for (int row = 0; row < 9; row++) {
+						for (int col = 0; col < 9; col++) {
+							System.out.print(solvedPuzzle[row][col] + " ");
+						}
+						System.out.println();
 					}
-					System.out.println();
 				}
 				System.out.println();
 			}
@@ -40,6 +42,7 @@ public class SudokuSolver {
 
 	/**
 	 * Builds a sudoku puzzle from an input file where x's indicate empty spaces
+	 * 
 	 * @param path location of the input file
 	 * @return sudoku puzzle
 	 */
@@ -53,7 +56,11 @@ public class SudokuSolver {
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
 
 			while ((input = bufferedReader.readLine()) != null) {
-
+				
+				if(input.length() != 9){
+					throw new Exception ("Invalid row length. Expecting 9. Found " + input.length() + ".");
+				}
+				
 				input = input.trim().replaceAll("[xX]", "0");
 
 				for (int i = 0; i < input.length(); i++) {
@@ -61,11 +68,17 @@ public class SudokuSolver {
 					col = (col == 8) ? 0 : col + 1;
 
 				}
+				//if col wraps around to 0, then move row down one
 				row = (col == 0) ? row + 1 : row;
 			}
 
+			if(row != 9){
+				throw new Exception("Invalid number of rows. Expecting 9, found " + row + ".");
+			}
+			
 		} catch (Exception e) {
 			System.out.println("Error converting file to puzzle [" + path + "] " + e);
+			puzzle = null;
 		}
 
 		return puzzle;
